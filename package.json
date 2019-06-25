@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:gcloud" : "npm build --prod && copy app.yaml dist",
-    "deploy:gcloud" : "cd dist && gcloud app deploy"
+    "build:gcloud": "npm build --prod && copy app.yaml dist",
+    "deploy:gcloud": "cd dist && gcloud app deploy"
   },
   "private": true,
   "dependencies": {
