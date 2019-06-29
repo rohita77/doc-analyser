@@ -1,5 +1,11 @@
 <div class="mat-app-background basic-container">
   <strong> {{ title }} </strong>
+  <ul>
+    <li class="text" *ngFor="let item of items | async">
+      {{item.name}}
+    </li>
+  </ul>
+  
   <mat-tab-group>
 
     <mat-tab label="Predict">

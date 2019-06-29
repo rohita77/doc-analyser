@@ -6,6 +6,10 @@ import {Classifier} from './classifier';
 
 import { FileUploader } from 'ng2-file-upload';
 
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+
+
 // const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 const URL = '.';
 
@@ -39,8 +43,14 @@ export class AppComponent implements OnInit {
   /* Classes to train */
   customClasses = [];
 
-  constructor() {
+  items: Observable<any[]>;
+
+  constructor(db: AngularFirestore) {
+
+   this.items = db.collection('items').valueChanges();
+
     this.loadClassifier();
+
   }
 
   async loadClassifier() {
