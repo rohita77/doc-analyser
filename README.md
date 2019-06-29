@@ -4,13 +4,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Uses [Angular Firebase] https://github.com/angular/angularfire2/blob/master/docs/install-and-setup.md for Firebase Services 
     [Firebase Database](./docs/firebase-database.md) as the data back end with realtime synching
-
+    [Authentication with Angular Material](./docs/firebase-auth-ng-material.md)
 
 # Live Example
 https://rohita77.github.io/ml-image-classifier/
 
 ## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `firebase serve` for a dev server. Navigate to `http://localhost:5000/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.

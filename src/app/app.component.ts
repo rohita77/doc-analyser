@@ -9,6 +9,11 @@ import { FileUploader } from 'ng2-file-upload';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+import { auth } from 'firebase/app';
+
 
 // const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 const URL = '.';
@@ -36,6 +41,9 @@ export class AppComponent implements OnInit {
 
   newLabel: String = null;
   Submitted = false;
+  showSignIn = false;
+  showUserDetails = false;
+  
 
 
   public uploader: FileUploader = new FileUploader({ url: URL });
@@ -45,9 +53,23 @@ export class AppComponent implements OnInit {
 
   items: Observable<any[]>;
 
-  constructor(db: AngularFirestore) {
+  constructor(
+      db: AngularFirestore,
+      public afAuth: AngularFireAuth,
 
-   this.items = db.collection('items').valueChanges();
+    
+    ) {
+
+    this.items = db.collection('items').valueChanges();
+
+    afAuth.authState.subscribe(auth => {
+      //the auth object contains the logged in user info
+      // if one exists. 
+    this.showSignIn = false;
+    this.showUserDetails = false;
+    console.log("Fired")
+  });
+
 
     this.loadClassifier();
 
