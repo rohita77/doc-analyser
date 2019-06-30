@@ -14,7 +14,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { auth } from 'firebase/app';
 
-
 // const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 const URL = '.';
 
@@ -41,10 +40,6 @@ export class AppComponent implements OnInit {
 
   newLabel: String = null;
   Submitted = false;
-  showSignIn = false;
-  showUserDetails = false;
-  
-
 
   public uploader: FileUploader = new FileUploader({ url: URL });
 
@@ -62,18 +57,10 @@ export class AppComponent implements OnInit {
 
     this.items = db.collection('items').valueChanges();
 
-    afAuth.authState.subscribe(auth => {
-      //the auth object contains the logged in user info
-      // if one exists. 
-    this.showSignIn = false;
-    this.showUserDetails = false;
-    console.log("Fired")
-  });
-
-
     this.loadClassifier();
 
   }
+
 
   async loadClassifier() {
     this.classifierReady = false;

@@ -21,12 +21,14 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ImagePredictorComponent,
-    ImageLabelComponent
+    ImageLabelComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,16 @@ import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule, 
-    NgxAuthFirebaseUIModule.forRoot(environment.firebase) // imports firebase/storage only needed for storage features
+    NgxAuthFirebaseUIModule.forRoot(
+      environment.firebase,
+      () => 'your_app_name_factory',
+      {
+        enableFirestoreSync: false, // enable/disable autosync users with firestore
+        toastMessageOnAuthSuccess: false, // whether to open/show a snackbar message on auth success - default : true
+        toastMessageOnAuthError: false // whether to open/show a snackbar message on auth error - default : true
+      }
+      
+      ) // imports firebase/storage only needed for storage features
   ],
   providers: [],
   bootstrap: [AppComponent],

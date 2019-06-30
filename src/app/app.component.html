@@ -1,31 +1,15 @@
 <div class="mat-app-background basic-container">
   <strong> {{ title }} </strong>
   
-  <!--TD: Refactor to component -->
-  <div *ngIf="afAuth.user | async as user; else showLogin">
-    <strong>
-      Hello {{ user.displayName }}!
-    </strong>
-    <button mat-icon-button (click)="showUserDetails=!showUserDetails">
-        <mat-icon aria-label="account details" color="accent">account_circle</mat-icon>
-    </button>
-    
-  </div>
-  <ng-template #showLogin>
-    <p>Please sign-in to access all functionality.
-      <button mat-icon-button (click)="showSignIn=!showSignIn">
-          <mat-icon aria-label="sign-in" color="accent" >exit_to_app</mat-icon>
-      </button>
-    <p>
-  </ng-template>
+  <app-sign-in>
 
-  <ngx-auth-firebaseui-user *ngIf="showUserDetails && afAuth.user"></ngx-auth-firebaseui-user>
-  <div *ngIf="showSignIn || showUserDetails">
-      <p>  You may sign-in using one of the options below</p>
-      <ngx-auth-firebaseui></ngx-auth-firebaseui>
-  </div>
+  </app-sign-in>
 
   <p><strong>Sample Firebase Items</strong></p>
+  <strong> <!-- Not Displayed Share the State in a Service-->
+    Hello {{ afAuth.user.displayName }}!
+  </strong>
+
   <ul>
     <li class="text" *ngFor="let item of items | async">
       {{item.name}}
